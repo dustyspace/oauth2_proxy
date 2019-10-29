@@ -1,0 +1,21 @@
+# docker-compose.yml
+version: '3'
+services:
+  # content hidden for the sake of brevity
+  proxy:
+    image: quay.io/pusher/oauth2_proxy
+    ports:
+    - "4180:4180"
+    command:
+    - '-client-id=xxx'
+    - '-client-secret=xxx'
+    - '-provider=github'
+    - '-github-org=davidgiffin'
+    - '-email-domain=*'
+    - '-cookie-secret=foo bar 1234'
+    - '-cookie-secure=false'
+    - '-upstream=http://nginx:80'
+    - '-http-address=0.0.0.0:4180'
+    - '-redirect-url=https://dev-backend-spacedust.giffin.org/users/auth/github/callback'
+    - '-set-xauthrequest=true'
+    # content hidden for the sake of brevity
